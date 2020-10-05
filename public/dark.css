@@ -1,0 +1,16 @@
+body {
+  background: rgb(80, 80, 80);
+  padding: 30px;
+  text-align: center;
+  color: white;
+}
+
+h2 {
+  color: lightgray;
+}
+
+a {
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}
