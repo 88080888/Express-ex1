@@ -6,6 +6,8 @@ const app = express();
 
 app.engine('hbs', hbs({ extname: 'hbs', layoutsDir: './views/layouts', defaultLayout: 'main' }));
 app.set('view engine', '.hbs');
+
+app.use(express.urlencoded({ extended: false }));
   
 app.get('/', (req, res) => {
   res.render('index');
@@ -45,6 +47,19 @@ app.get('/style.css', (req, res) => {
 
 app.get('/dark.css', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/dark.css'));
+});
+
+app.post('/contact/send-message', (req, res) => {
+
+  const { author, sender, title, message, file } = req.body;
+
+  if(author && sender && title && message && file) {
+    res.render('contact', { isSent: true });
+  }
+  else {
+    res.render('contact', { isError: true })
+  }
+
 });
 
 app.use('/user', (req, res, next) => {

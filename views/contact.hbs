@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <meta charset="utf-8">
-  <title>Contact</title>
-  <h2>Send me a message</h2>
+  <h2>Contact me</h2>
+
+  <form action="/contact/send-message" method="POST">
+
+  {{#if isSent}}
+  <div class=".isSent">
+    The message has been sent!<br>
+    The file {{file}} has been sent!
+  </div>
+  {{/if}}
+
+  {{#if isError}}
+  <div class=".isError">You can't leave fields empty!</div>
+  {{/if}}
+
+    <label>
+      Your name: <input type="text" name="author">
+    </label>
+    <label>
+      Your email: <input type="email" name="sender">
+    </label>
+    <label>
+      Title: <input type="text" name="title">
+    </label>
+    <label>
+      Project design: <input type="file" name="file" accept=".jpg,.png,.jpeg,.gif">
+    </label>
+    <label>
+      Message: <textarea name="message"></textarea>
+    </label>
+    <button type="submit">Send message</button>
+  </form>
 </html>
