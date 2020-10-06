@@ -8,6 +8,8 @@ app.engine('hbs', hbs({ extname: 'hbs', layoutsDir: './views/layouts', defaultLa
 app.set('view engine', '.hbs');
 
 app.use(express.urlencoded({ extended: false }));
+
+app.use(express.json());
   
 app.get('/', (req, res) => {
   res.render('index');
@@ -54,7 +56,7 @@ app.post('/contact/send-message', (req, res) => {
   const { author, sender, title, message, file } = req.body;
 
   if(author && sender && title && message && file) {
-    res.render('contact', { isSent: true });
+    res.render('contact', { isSent: true, });
   }
   else {
     res.render('contact', { isError: true })
